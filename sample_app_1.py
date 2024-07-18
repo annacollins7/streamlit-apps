@@ -9,6 +9,10 @@ st.title('Sample App 1')
 
 number_of_motors = st.slider('Number of Motors:', min_value=1, max_value=20)
 
+for i in range(number_of_motors):
+    st.selectbox("What type of motor?",
+    ("Forbidden ESP", "Solid", "Hybrid", "Liquid"))
+
 st.write(str(number_of_motors))
 
 motor_type = st.selectbox("What type of rocket?",
