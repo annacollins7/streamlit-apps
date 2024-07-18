@@ -24,10 +24,12 @@ if motor_type is "Solid":
     st.write("You've selected solid")
 
 # Hybrid case
-
+if motor_type is "Hybrid":
+    st.write("You've selected hybrid")
 
 # Liquid case
-
+if motor_type is "Liquid":
+    st.write("You've selected liquid")
 
 
 
