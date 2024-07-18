@@ -20,4 +20,5 @@ def calculate_square(x):
 
 if st.button('Calculate'):
     st.write(calculate_square(2))
+    print(calculate_square(2))
 
