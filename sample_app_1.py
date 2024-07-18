@@ -17,6 +17,7 @@ select_box = st.selectbox("What type of rocket?",
 
 def calculate_square(x):
     return x**2
-# if st.button('Calculate'):
-#     st.write(calculate_square(2))
+
+if st.button('Calculate'):
+    st.write(calculate_square(2))
 
