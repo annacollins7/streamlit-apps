@@ -1,5 +1,9 @@
 import streamlit as st
 
+
+def calculate_square(x):
+    return x**2
+
 # Add a title to your app
 st.title('Sample App 1')
 
@@ -13,6 +17,3 @@ select_box = st.selectbox("What type of rocket?",
 if st.button('Calculate'):
     st.write(calculate_square(2))
 
-
-def calculate_square(x):
-    return x**2
