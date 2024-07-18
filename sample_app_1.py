@@ -16,8 +16,12 @@ motor_type = st.selectbox("What type of rocket?",
 
 
 # Solid case
-if motor_type is "Solid":
+if motor_type is "Forbidden ESP":
     st.write("MAY need to electrocute it")
+
+# Solid case
+if motor_type is "Solid":
+    st.write("You've selected solid")
 
 # Hybrid case
 
