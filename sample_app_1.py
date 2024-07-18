@@ -12,12 +12,12 @@ number_of_motors = st.slider('Number of Motors:', min_value=1, max_value=20)
 st.write(str(number_of_motors))
 
 motor_type = st.selectbox("What type of rocket?",
-    ("Solid", "Hybrid", "Liquid"))
+    ("Forbidden ESP", "Solid", "Hybrid", "Liquid"))
 
 
 # Solid case
 if motor_type is "Solid":
-    st.write("Need to electrocute it")
+    st.write("MAY need to electrocute it")
 
 # Hybrid case
 
