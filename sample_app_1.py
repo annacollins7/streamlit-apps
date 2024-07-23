@@ -6,12 +6,6 @@ from rocketpy import Environment, SolidMotor, Rocket, Flight
 st.title('Rocket Simulator App')
 
 
-st.write("Please define your environment:")
-latitude_number = st.number_input("Insert latitude")
-longitude_number = st.number_input("Insert longitude")
-elevation_number = st.number_input("Insert elevation")
-
-environment = Environment(latitude=latitude_number, longitude=longitude_number, elevation=elevation_number)
 
 number_of_motors = st.slider('Number of Motors:', min_value=1, max_value=20)
 
@@ -24,23 +18,29 @@ motor_type = st.selectbox("What type of rocket?",
     ("Forbidden ESP", "Solid", "Hybrid", "Liquid"))
 
 
-# Solid case
-if motor_type is "Forbidden ESP":
-    st.write("MAY need to electrocute it")
+# # Solid case
+# if motor_type is "Forbidden ESP":
+#     st.write("MAY need to electrocute it")
 
-# Solid case
-if motor_type is "Solid":
-    st.write("You've selected solid")
+# # Solid case
+# if motor_type is "Solid":
+#     st.write("You've selected solid")
 
-# Hybrid case
-if motor_type is "Hybrid":
-    st.write("You've selected hybrid")
+# # Hybrid case
+# if motor_type is "Hybrid":
+#     st.write("You've selected hybrid")
 
-# Liquid case
-if motor_type is "Liquid":
-    st.write("You've selected liquid")
+# # Liquid case
+# if motor_type is "Liquid":
+#     st.write("You've selected liquid")
 
 
+# st.write("Please define your environment:")
+# latitude_number = st.number_input("Insert latitude")
+# longitude_number = st.number_input("Insert longitude")
+# elevation_number = st.number_input("Insert elevation")
+
+# environment = Environment(latitude=latitude_number, longitude=longitude_number, elevation=elevation_number)
 
 
 # def calculate_square(x):
