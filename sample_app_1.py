@@ -7,7 +7,10 @@ import streamlit as st
 st.title('Rocket Simulator App')
 
 
+st.write("Please define your environment:")
 latitude_number = st.number_input("Insert latitude")
+longitude_number = st.number_input("Insert longitude")
+elevation_number = st.number_input("Insert elevation")
 
 
 number_of_motors = st.slider('Number of Motors:', min_value=1, max_value=20)
