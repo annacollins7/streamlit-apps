@@ -4,7 +4,10 @@ import streamlit as st
 
 
 # Add a title to your app
-st.title('Sample App 1')
+st.title('Rocket Simulator App')
+
+
+latitude_number = st.number_input("Insert latitude")
 
 
 number_of_motors = st.slider('Number of Motors:', min_value=1, max_value=20)
