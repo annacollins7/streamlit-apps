@@ -6,6 +6,16 @@ from rocketpy import Environment, SolidMotor, Rocket, Flight
 st.title('Rocket Simulator App')
 
 
+# Creates an environment from latitude, longitude, and elevation
+
+st.write("Please define your environment:")
+latitude_number = st.number_input("Insert latitude")
+longitude_number = st.number_input("Insert longitude")
+elevation_number = st.number_input("Insert elevation")
+
+environment = Environment(latitude=latitude_number, longitude=longitude_number, elevation=elevation_number)
+
+
 
 number_of_motors = st.slider('Number of Motors:', min_value=1, max_value=20)
 
