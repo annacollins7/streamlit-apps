@@ -10,10 +10,10 @@ st.title('Map Click Coordinates')
 st.write('Click on the map to get the longitude and latitude.')
 
 # Initialize the map
-m = folium.Map(location=[20, 0], zoom_start=2, tiles='Stamen Terrain')
+m = folium.Map(location=[20, 0], zoom_start=2)
 
 # Add satellite tile layer
-folium.TileLayer('Stamen Terrain').add_to(m)
+# folium.TileLayer('Stamen Terrain').add_to(m)
 
 # Add a click event listener to the map
 click_event_js = """
