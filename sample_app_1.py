@@ -8,6 +8,9 @@ st.title('Rocket Simulator App')
 
 # Creates an environment from latitude, longitude, and elevation
 
+
+# We want a selection between the five locations, and then store that location in a variable called `location'
+
 st.write("Please define your environment:")
 latitude_number = st.number_input("Insert latitude")
 longitude_number = st.number_input("Insert longitude")
