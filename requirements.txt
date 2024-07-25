@@ -1,2 +1,5 @@
 streamlit
 rocketpy
+
+streamlit_folium
+folium
