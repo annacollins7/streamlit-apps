@@ -6,22 +6,36 @@ import folium
 # Add a title to your app
 st.title('Rocket Simulator App')
 
-# Initialize the app
 st.title('Map Click Coordinates')
 st.write('Click on the map to get the longitude and latitude.')
 
 # Initialize the map
-m = folium.Map(location=[0, 0], zoom_start=2)
+m = folium.Map(location=[20, 0], zoom_start=2)
 
-# Add click functionality
-clicked_coords = st_folium(m, width=700, height=500)
+# Add a click event listener to the map
+click_event_js = """
+    function(e) {
+        var coords = e.latlng;
+        var lat = coords.lat;
+        var lng = coords.lng;
+        var popup = L.popup()
+            .setLatLng(coords)
+            .setContent("Lat: " + lat + "<br>Lng: " + lng)
+            .openOn(%s);
+        window.parent.postMessage({lat: lat, lng: lng}, "*");
+    }
+""" % m.get_name()
+
+m.add_child(folium.ClickForMarker(popup=None))
+
+# Display the map
+result = st_folium(m, width=700, height=500)
 
 # Display coordinates when clicked
-if clicked_coords:
-    lat = clicked_coords['last_clicked']['lat']
-    lng = clicked_coords['last_clicked']['lng']
+if result['last_clicked']:
+    lat = result['last_clicked']['lat']
+    lng = result['last_clicked']['lng']
     st.write(f'Latitude: {lat}, Longitude: {lng}')
-
 
 # Creates an environment from latitude, longitude, and elevation
 
