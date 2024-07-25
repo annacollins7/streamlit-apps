@@ -6,6 +6,22 @@ import folium
 # Add a title to your app
 st.title('Rocket Simulator App')
 
+# Initialize the app
+st.title('Map Click Coordinates')
+st.write('Click on the map to get the longitude and latitude.')
+
+# Initialize the map
+m = folium.Map(location=[0, 0], zoom_start=2)
+
+# Add click functionality
+clicked_coords = st_folium(m, width=700, height=500)
+
+# Display coordinates when clicked
+if clicked_coords:
+    lat = clicked_coords['last_clicked']['lat']
+    lng = clicked_coords['last_clicked']['lng']
+    st.write(f'Latitude: {lat}, Longitude: {lng}')
+
 
 # Creates an environment from latitude, longitude, and elevation
 
