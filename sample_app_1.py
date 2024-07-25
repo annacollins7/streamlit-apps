@@ -1,6 +1,6 @@
 import streamlit as st
 from rocketpy import Environment, SolidMotor, Rocket, Flight
-rom streamlit_folium import st_folium
+from streamlit_folium import st_folium
 import folium
 
 # Add a title to your app
