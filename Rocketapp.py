@@ -111,6 +111,7 @@ def simulate_flight():
     flight = Flight(
         rocket=rocket,
         environment=environment,
+        rail_length=5.2,
         inclination=90,
         heading=0
     )
