@@ -74,7 +74,7 @@ elif weather_condition == "Rainy":
 def simulate_flight():
     # Create a SolidMotor object with the correct parameters
     motor = SolidMotor(
-        thrust_source="lambda x: 1 / (x + 1)",  # Adjust to the actual thrust data file
+        thrust_source=lambda x: 1 / (x + 1),  # Adjust to the actual thrust data file
         dry_mass=1.815,
         dry_inertia=(0.125, 0.125, 0.002),
         center_of_dry_mass_position=0.317,
