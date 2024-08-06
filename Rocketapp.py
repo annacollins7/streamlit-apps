@@ -95,7 +95,6 @@ def simulate_flight():
     
     # Rocket object
     rocket = Rocket(
-        motor=motor,
         radius=127 / 2000,
         mass=14.426,
         inertia=(6.321, 6.321, 0.034),
@@ -106,7 +105,7 @@ def simulate_flight():
     )
     
     # Attach motor to rocket
-    rocket.setMotor(motor, position=-1.255)  # Adjust position as needed
+    rocket.add_motor(motor, position=-1.255)  # Adjust position as needed
     
     # Flight object
     flight = Flight(
