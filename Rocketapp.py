@@ -74,7 +74,7 @@ elif weather_condition == "Rainy":
 def simulate_flight():
     # Create a SolidMotor object with the correct parameters
     motor = SolidMotor(
-        thrust_source=1500,  # Adjust to the actual thrust data file or value
+        thrust_source="../data/motors/Cesaroni_M1670.eng",  # Adjust to the actual thrust data file
         dry_mass=1.815,
         dry_inertia=(0.125, 0.125, 0.002),
         center_of_dry_mass_position=0.317,
@@ -96,15 +96,17 @@ def simulate_flight():
     # Rocket object
     rocket = Rocket(
         motor=motor,
-        radius=127/2000,
-        mass=19.2,
-        inertiaI=6.60,
-        inertiaZ=0.0351,
-        distanceRocketNozzle=-1.255,
-        distanceRocketPropellant=0.930,
-        powerOffDrag=2.5,
-        powerOnDrag=2.5
+        radius=127 / 2000,
+        mass=14.426,
+        inertia=(6.321, 6.321, 0.034),
+        power_off_drag="powerOffDragCurve.csv",
+        power_on_drag="powerOnDragCurve.csv",
+        center_of_mass_without_motor=0,
+        coordinate_system_orientation="tail_to_nose",
     )
+    
+    # Attach motor to rocket
+    rocket.setMotor(motor, position=-1.255)  # Adjust position as needed
     
     # Flight object
     flight = Flight(
