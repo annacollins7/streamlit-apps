@@ -66,21 +66,53 @@ weather_condition = st.selectbox("Select weather condition:", ("Clear", "Windy",
 
 # Adjust environment based on weather condition
 if weather_condition == "Windy":
-    environment.windSpeed = 15  # Example value, adjust as needed
-    environment.windDirection = 90  # Example value, adjust as needed
+    environment.setWind(speed=15, angle=90)  # Example values, adjust as needed
 elif weather_condition == "Rainy":
-    environment.rainRate = 5  # Example value, adjust as needed
+    environment.setRainfall(rate=5)  # Example values, adjust as needed
 
 # Function to simulate rocket flight and plot trajectory
 def simulate_flight():
-    # Dummy motor for demonstration
-    motor = SolidMotor(thrustSource=lambda x: 1 / (x + 1), burnOut=3.9, grainNumber=5, grainSeparation=5/1000, grainDensity=1815, grainOuterRadius=33/1000, grainInitialInnerRadius=15/1000, grainInitialHeight=120/1000, nozzleRadius=33/1000, throatRadius=11/1000, interpolationMethod='linear')
+    # Create a SolidMotor object with the correct parameters
+    motor = SolidMotor(
+        thrust_source=1500,  # Adjust to the actual thrust data file or value
+        dry_mass=1.815,
+        dry_inertia=(0.125, 0.125, 0.002),
+        center_of_dry_mass_position=0.317,
+        grains_center_of_mass_position=0.397,
+        burn_time=3.9,
+        grain_number=5,
+        grain_separation=5 / 1000,
+        grain_density=1815,
+        grain_outer_radius=33 / 1000,
+        grain_initial_inner_radius=15 / 1000,
+        grain_initial_height=120 / 1000,
+        nozzle_radius=33 / 1000,
+        throat_radius=11 / 1000,
+        interpolation_method="linear",
+        nozzle_position=0,
+        coordinate_system_orientation="nozzle_to_combustion_chamber",
+    )
     
     # Rocket object
-    rocket = Rocket(motor=motor, radius=127/2000, mass=19.2, inertiaI=6.60, inertiaZ=0.0351, distanceRocketNozzle=-1.255, distanceRocketPropellant=0.930, powerOffDrag=2.5, powerOnDrag=2.5)
+    rocket = Rocket(
+        motor=motor,
+        radius=127/2000,
+        mass=19.2,
+        inertiaI=6.60,
+        inertiaZ=0.0351,
+        distanceRocketNozzle=-1.255,
+        distanceRocketPropellant=0.930,
+        powerOffDrag=2.5,
+        powerOnDrag=2.5
+    )
     
     # Flight object
-    flight = Flight(rocket=rocket, environment=environment, inclination=90, heading=0)
+    flight = Flight(
+        rocket=rocket,
+        environment=environment,
+        inclination=90,
+        heading=0
+    )
     
     # Get flight data
     time, altitude = flight.solution[:,0], flight.solution[:,2]
@@ -97,5 +129,3 @@ def simulate_flight():
 # Simulate flight and plot trajectory button
 if st.button('Simulate Flight'):
     simulate_flight()
-
-
