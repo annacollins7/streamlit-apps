@@ -6,41 +6,37 @@ import folium
 # Add a title to your app
 st.title('Rocket Simulator App')
 
-st.title('Map Click Coordinates')
-st.write('Click on the map to get the longitude and latitude.')
+# st.title('Map Click Coordinates')
+# st.write('Click on the map to get the longitude and latitude.')
 
-# Initialize the map
-m = folium.Map(location=[20, 0], zoom_start=2)
+# # Initialize the map
+# m = folium.Map(location=[20, 0], zoom_start=2)
 
-# Add satellite tile layer
-# folium.TileLayer('Stamen Terrain').add_to(m)
+# # Add a click event listener to the map
+# click_event_js = """
+#     function(e) {
+#         var coords = e.latlng;
+#         var lat = coords.lat;
+#         var lng = coords.lng;
+#         var popup = L.popup()
+#             .setLatLng(coords)
+#             .setContent("Lat: " + lat + "<br>Lng: " + lng)
+#             .openOn(%s);
+#         window.parent.postMessage({lat: lat, lng: lng}, "*");
+#     }
+# """ % m.get_name()
 
-# Add a click event listener to the map
-click_event_js = """
-    function(e) {
-        var coords = e.latlng;
-        var lat = coords.lat;
-        var lng = coords.lng;
-        var popup = L.popup()
-            .setLatLng(coords)
-            .setContent("Lat: " + lat + "<br>Lng: " + lng)
-            .openOn(%s);
-        window.parent.postMessage({lat: lat, lng: lng}, "*");
-    }
-""" % m.get_name()
+# m.add_child(folium.ClickForMarker(popup=None))
 
-m.add_child(folium.ClickForMarker(popup=None))
+# # Display the map
+# result = st_folium(m, width=700, height=500)
 
-# Display the map
-result = st_folium(m, width=700, height=500)
+# # Display coordinates when clicked
+# if result['last_clicked']:
+#     lat = result['last_clicked']['lat']
+#     lng = result['last_clicked']['lng']
+#     st.write(f'Latitude: {lat}, Longitude: {lng}')
 
-# Display coordinates when clicked
-if result['last_clicked']:
-    lat = result['last_clicked']['lat']
-    lng = result['last_clicked']['lng']
-    st.write(f'Latitude: {lat}, Longitude: {lng}')
-
-# Creates an environment from latitude, longitude, and elevation
 
 
 # We want a selection between the five locations, and then store that location in a variable called `location'
