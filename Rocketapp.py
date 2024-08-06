@@ -116,17 +116,9 @@ def simulate_flight():
         heading=0
     )
     
-    # Get flight data
-    time, altitude = flight.solution[:,0], flight.solution[:,2]
-    
-    # Plot trajectory
-    plt.figure(figsize=(10, 5))
-    plt.plot(time, altitude)
-    plt.title('Rocket Flight Trajectory')
-    plt.xlabel('Time (s)')
-    plt.ylabel('Altitude (m)')
-    plt.grid(True)
-    st.pyplot(plt)
+    # Plot 3D trajectory
+    fig = flight.plots.trajectory_3d()
+    st.pyplot(fig)
 
 # Simulate flight and plot trajectory button
 if st.button('Simulate Flight'):
